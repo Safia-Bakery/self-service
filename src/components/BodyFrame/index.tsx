@@ -1,15 +1,36 @@
 import { useTranslation } from "react-i18next";
-import ProgressBtn from "../ProgressBtn";
+import Button from "../Button";
+import cl from "classnames";
+import useQueryString from "@/hooks/custom/useQueryString";
+import { useNavigateParams } from "@/hooks/custom/useCustomNavigate";
+import { useRef } from "react";
 
 const BodyFrame = () => {
   const { t } = useTranslation();
+  const listref = useRef<HTMLDivElement>(null);
+  const id = useQueryString("id");
+  const navigateParams = useNavigateParams();
+  const renderOrderList = (item: number | string) => {
+    //bg-secondary
+    if (id == item) return `bg-mainBrown scale-105`;
+    else return "bg-primary";
+  };
+
+  const handleNavigate = (id: string | number) => {
+    navigateParams({ id });
+  };
   return (
     <div className="overflow-auto flex flex-col flex-1">
-      <div className="flex w-full overflow-x-auto gap-3 py-3">
+      <div className="flex w-full overflow-x-auto overflow-y-visible py-3">
         {[...Array(15)].map((_, idx) => (
           <div
             key={idx}
-            className="flex items-center justify-center bg-primary shadow-orderCard rounded-md min-w-96 h-44"
+            onClick={() => handleNavigate(idx)}
+            ref={listref}
+            className={cl(
+              "flex items-center cursor-pointer justify-center transition-all shadow-orderCard rounded-md min-w-96 h-44 mx-2",
+              renderOrderList(idx)
+            )}
           >
             <span className="text-white text-4xl">
               {t("order")} №{idx}
@@ -17,7 +38,7 @@ const BodyFrame = () => {
           </div>
         ))}
       </div>
-      <div className="bg-white p-6 rounded-lg flex-1 flex flex-col overflow-hidden">
+      <div className="bg-white p-6 rounded-lg flex-1 flex flex-col overflow-hidden mt-4">
         <div className="flex justify-between w-full flex-1 overflow-hidden mb-8">
           <div className="overflow-y-auto max-w-[45lvw] w-full pr-2 flex flex-col flex-1">
             {[...Array(7)].map((_, idx) => (
@@ -56,12 +77,8 @@ const BodyFrame = () => {
           </div>
         </div>
 
-        {/* background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(90deg, #DCC38B 43.91%, rgba(180, 200, 140, 0) 52.91%);
-
- */}
-
-        <ProgressBtn title={t("receive")} />
+        <Button progress>{t("receive")}</Button>
+        {/* <Button className="bg-secondary">{t("collected")}</Button> */}
       </div>
     </div>
   );

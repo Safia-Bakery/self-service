@@ -5,7 +5,7 @@ const Timer = () => {
   const [time, $time] = useState(new Date());
 
   useEffect(() => {
-    const timer = setInterval(() => $time(new Date()), 3000);
+    const timer = setInterval(() => $time(new Date()), 1000);
     return function cleanup() {
       clearInterval(timer);
     };

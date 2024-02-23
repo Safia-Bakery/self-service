@@ -1,0 +1,35 @@
+.btn {
+  width: 30vw;
+  border-radius: 50px;
+  padding: 1vh 0;
+  font-size: 48px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressContainer {
+  width: 100%;
+  background-color: #eee;
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #dcc38b 80%, rgba(180, 200, 140, 0) 90%);
+  animation: progressAnimation 10s linear forwards;
+}
+
+@keyframes progressAnimation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 125%;
+  }
+}

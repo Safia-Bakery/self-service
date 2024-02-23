@@ -7,6 +7,7 @@ const localization = {
       receiving_time: "Время поступления",
       table: "Стол",
       receive: "Принять",
+      collected: "Собрано",
     },
   },
   uz: {

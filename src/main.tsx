@@ -6,12 +6,15 @@ import { Provider } from "react-redux";
 import Loading from "./components/Loader/index.tsx";
 import { PersistGate } from "redux-persist/integration/react";
 import "./index.scss";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={<Loading absolute />}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>

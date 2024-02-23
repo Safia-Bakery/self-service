@@ -9,7 +9,9 @@ module.exports = {
         borderGray: "#E4E4E4",
         mainBg: "#BEA08733",
         primary: "#DCC38B",
+        secondary: "#B4C88C",
         btnGray: "#0000003B",
+        mainBrown: "#BEA087",
       },
       boxShadow: {
         selected: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
