@@ -13,7 +13,7 @@ interface Props {
 
 const Button = ({ children, className, progress, ...others }: Props) => {
   return (
-    <button className={cl(styles.btn, className)} {...others}>
+    <button className={cl(className, styles.btn, "shadow-button")} {...others}>
       {progress && (
         <div className={cl(styles.progressContainer, styles.progressBar)} />
       )}
