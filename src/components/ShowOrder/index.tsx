@@ -4,7 +4,7 @@ import Loading from "../Loader";
 import useOrder from "@/hooks/useOrder";
 import dayjs from "dayjs";
 import useUpdateQueryStr from "@/hooks/custom/useUpdateQueryStr";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect } from "react";
 import { OrderStatus } from "@/utils/types";
 import { useAppDispatch, useAppSelector } from "@/store/rootConfig";
 import { cartSelector, handleCart } from "@/store/reducers/cart";
@@ -47,19 +47,28 @@ const ShowOrder = () => {
                   key={item.Id}
                   className="w-full flex border-b border-b-borderGray last:border-none"
                 >
-                  <span className="text-textGray lg:text-5xl text-xl py-2">
-                    {item.Name}(x{item.Amount}):
+                  <span className="text-textGray lg:text-4xl text-xl py-2 mr-2">
+                    {/* {item.Name}(x{item.Amount}): */}
+                    {t("dish")}:
                   </span>
                   <ul className="w-full">
-                    {item.Modifiers.map((modifier) => (
+                    {/* {item.Modifiers.map((modifier) => (
                       <li
                         key={modifier.Id}
-                        className="flex justify-between items-center lg:text-5xl text-xl w-full font-normal lg:py-2 py-1"
+                        className="flex justify-between items-center lg:text-4xl text-xl w-full font-normal lg:py-2 py-1"
                       >
                         <span>{modifier.Name}</span>
                         <span>x{modifier.Amount}</span>
                       </li>
-                    ))}
+                    ))} */}
+
+                    <li
+                      key={item.Id}
+                      className="flex justify-between items-center lg:text-4xl text-xl w-full font-normal lg:py-2 py-1"
+                    >
+                      <span>{item.Name}</span>
+                      <span>x{item.Amount}</span>
+                    </li>
                   </ul>
                 </div>
               ))}
