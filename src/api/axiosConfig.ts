@@ -86,9 +86,9 @@ class BaseAPIClient {
       return response;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
-        // if (error.response.status === 403 || error.response.status === 401) {
-        //   this.store?.dispatch(logoutHandler());
-        // }
+        if (error.response.status === 403 || error.response.status === 401) {
+          this.store?.dispatch(logoutHandler());
+        }
       }
       throw error;
     }
