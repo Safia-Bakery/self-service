@@ -8,6 +8,7 @@ const localization = {
       table: "Стол",
       receive: "Принять",
       collected: "Собрано",
+      select_order: "Выберите заказ",
     },
   },
   uz: {
@@ -19,6 +20,7 @@ const localization = {
       table: "Stol",
       receive: "Qabul qilish",
       collected: "Yeg'ildi",
+      select_order: "Buyurtmani tanlang",
     },
   },
 };

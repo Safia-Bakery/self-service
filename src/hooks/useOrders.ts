@@ -6,6 +6,7 @@ import { OrderTypes } from "@/utils/types";
 
 export const useOrders = ({ enabled }: { enabled?: boolean }) => {
   const token = useAppSelector(tokenSelector);
+
   return useQuery({
     queryKey: ["orders"],
     queryFn: () =>
@@ -17,6 +18,7 @@ export const useOrders = ({ enabled }: { enabled?: boolean }) => {
         .then(({ data: response }) => response as OrderTypes[]),
     enabled: enabled && !!token,
     refetchOnMount: true,
+    retry: 3,
   });
 };
 export default useOrders;

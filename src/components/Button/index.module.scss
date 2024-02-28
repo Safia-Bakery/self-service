@@ -9,6 +9,10 @@
   z-index: 1;
   overflow: hidden;
   position: relative;
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
 }
 
 .progressContainer {

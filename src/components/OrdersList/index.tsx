@@ -1,9 +1,11 @@
-import { useNavigateParams } from "@/hooks/custom/useCustomNavigate";
-import useQueryString from "@/hooks/custom/useQueryString";
-import useOrders from "@/hooks/useOrders";
 import cl from "classnames";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigateParams } from "@/hooks/custom/useCustomNavigate";
+import useQueryString from "@/hooks/custom/useQueryString";
+import useOrders from "@/hooks/useOrders";
+import { cartSelector } from "@/store/reducers/cart";
+import { useAppSelector } from "@/store/rootConfig";
 
 const OrdersList = () => {
   const { t } = useTranslation();
@@ -11,31 +13,33 @@ const OrdersList = () => {
   const id = useQueryString("id");
   const navigateParams = useNavigateParams();
 
+  const itemsList = useAppSelector(cartSelector);
+
   const { data } = useOrders({});
 
-  const renderOrderList = (item: string) => {
-    //bg-secondary
-    if (id == item) return `bg-mainBrown scale-105`;
-    else return "bg-primary";
-  };
+  const renderOrderList = (item: string) =>
+    id == item
+      ? `bg-mainBrown scale-105`
+      : itemsList[item]
+      ? "bg-secondary"
+      : "bg-primary";
 
   const handleNavigate = (id: string | number) => navigateParams({ id });
 
   return (
-    <div className="flex w-full overflow-x-auto overflow-y-visible py-[1vh]">
+    <div className="flex w-full overflow-x-auto overflow-y-visible lg:py-4 py-2">
       {data?.map((order, idx) => (
         <div
           key={idx}
           onClick={() => handleNavigate(order.Id)}
           ref={listref}
           className={cl(
-            "flex items-center cursor-pointer justify-center transition-all shadow-orderCard rounded-md min-w-96 h-[10em] mx-2",
+            "flex items-center cursor-pointer justify-center transition-all shadow-orderCard rounded-md lg:min-w-96 min-w-60 lg:h-40 h-24 mx-2",
             renderOrderList(order.Id!)
           )}
         >
-          <span className="text-white text-4xl">
+          <span className="text-white lg:text-4xl text-2xl">
             {t("order")} №{order.Number}
-            {t("ssss")} №{order.Guests.length}
           </span>
         </div>
       ))}

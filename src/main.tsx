@@ -12,6 +12,7 @@ import Loading from "./components/Loader/index.tsx";
 import "./index.scss";
 
 export const baseURL = "http://10.0.3.189:9042"; // todo
+// export const baseURL = "http://10.0.3.73:9042"; // todo
 // export const baseURL = "http://10.0.3.189:9042";
 
 export default new BaseAPIClient(baseURL, store);

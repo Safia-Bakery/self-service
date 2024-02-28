@@ -6,6 +6,7 @@ import axios, {
 } from "axios";
 import { Store } from "redux";
 import { RootState } from "@/store/rootConfig";
+import { logoutHandler } from "@/store/reducers/auth";
 
 interface BaseUrlParams {
   url: string;
@@ -51,9 +52,9 @@ class BaseAPIClient {
 
   private handleRequestError = (error: AxiosError): Promise<never> => {
     if (axios.isAxiosError(error) && error.response) {
-      if (error.response.status === 403 || error.response.status === 401) {
-        this.store?.dispatch(logoutHandler());
-      }
+      // if (error.response.status === 403 || error.response.status === 401) {
+      //   this.store?.dispatch(logoutHandler());
+      // }
     }
 
     // Reject the promise with the error
@@ -64,8 +65,6 @@ class BaseAPIClient {
   ): AxiosRequestConfig {
     const state = this.store?.getState();
     const token = state?.auth.token;
-
-    console.log(token, "token");
 
     if (token) {
       config.headers = {
@@ -87,9 +86,9 @@ class BaseAPIClient {
       return response;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
-        if (error.response.status === 403 || error.response.status === 401) {
-          this.store?.dispatch(logoutHandler());
-        }
+        // if (error.response.status === 403 || error.response.status === 401) {
+        //   this.store?.dispatch(logoutHandler());
+        // }
       }
       throw error;
     }

@@ -12,6 +12,7 @@ export const useOrder = ({
   enabled?: boolean;
 }) => {
   const token = useAppSelector(tokenSelector);
+
   return useQuery({
     queryKey: ["order", id],
     queryFn: () =>

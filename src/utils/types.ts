@@ -3,6 +3,14 @@ export enum Language {
   uz = "uz",
 }
 
+export enum OrderStatus {
+  new,
+  received,
+  collected,
+}
+
+export type BaseCartType = { [key: string]: number };
+
 export interface OrderTypes {
   Id: string;
   Number: number;

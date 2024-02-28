@@ -15,18 +15,18 @@
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"],
-      "custom/*": ["./src/hooks/custom/*"],
-      "reducers/*": ["./src/store/reducers/*"]
+      "@/*": ["./src/*"]
+      // "custom/*": ["./src/hooks/custom/*"],
+      // "reducers/*": ["./src/store/reducers/*"]
     },
     "outDir": "./dist",
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  // "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

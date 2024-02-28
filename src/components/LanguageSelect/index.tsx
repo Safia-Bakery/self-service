@@ -27,13 +27,13 @@ const LanguageSelect = ({ onClose }: Props) => {
         </button>
       </div>
 
-      <div className="max-h-32 h-full w-full overflow-y-auto flex items-center justify-evenly flex-wrap py-4">
+      <div className="max-h-32 h-full w-full overflow-y-auto flex items-center justify-evenly flex-wrap py-2 lg:py-4">
         {Object.values(Language).map((item) => (
           <div
             key={item}
             onClick={handleLang(item)}
             className={cl(
-              "cursor-pointer flex items-center justify-center p-3 rounded-full transition-all",
+              "cursor-pointer flex items-center justify-center lg:p-3 p-2 rounded-full transition-all",
               { ["border border-borderGray"]: currLang === item }
             )}
           >

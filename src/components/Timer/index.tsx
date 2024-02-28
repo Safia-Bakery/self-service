@@ -12,7 +12,7 @@ const Timer = () => {
   }, []);
   return (
     <>
-      <p className="text-4xl">{dayjs(time).format("HH:mm")}</p>
+      <p className="lg:text-4xl text-xl">{dayjs(time).format("HH:mm")}</p>
       <p>{dayjs(time).format("DD.MM.YYYY")}</p>
     </>
   );

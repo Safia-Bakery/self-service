@@ -14,22 +14,28 @@ const Header = () => {
   const toggleModal = () => $selectLang((prev) => !prev);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white lg:h-24 h-36">
       <Container>
-        <div className="flex justify-between items-center border-b border-b-borderGray pb-2">
-          <div className="flex items-center">
-            <img src="/assets/images/safia-logo.png" alt="safia-logo" />
-            <h3 className="text-4xl text-textGray ml-2">Safia Паркентский</h3>
+        <div className="flex h-full justify-between items-center border-b border-b-borderGray pb-2">
+          <div className="flex items-center h-full">
+            <img
+              className="max-h-14 max-w-14 lg:max-h-20 lg:max-w-20 w-full h-full"
+              src="/assets/images/safia-logo.png"
+              alt="safia-logo"
+            />
+            <h3 className="text-xl text-textGray ml-2 lg:text-4xl">
+              Safia Паркентский
+            </h3>
           </div>
 
-          <div className="flex gap-6 relative">
+          <div className="flex lg:gap-6 gap-3 relative">
             <div
-              className="flex items-center gap-2 pr-6 py-2 border-r border-r-borderGray"
+              className="flex items-center gap-2 pr-4 lg:pr-6 lg:py-2 py-0 border-r border-r-borderGray"
               onClick={toggleModal}
             >
               <span className="capitalize">{t(currLang)}:</span>
               <div className="w-9 h-9">
-                <img src={`/assets/icons/${currLang}.svg`} alt="ru" />
+                <img src={`/assets/icons/${currLang}.svg`} alt="lang" />
               </div>
             </div>
             {selectLang && (
