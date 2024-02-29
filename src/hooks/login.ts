@@ -13,7 +13,7 @@ export const useLogin = () => {
           url: "/api/login/13550",
         })
         .then(({ data: response }) => dispatch(loginHandler(response))),
-    enabled: true,
+    enabled: false,
     refetchOnMount: true,
   });
 };

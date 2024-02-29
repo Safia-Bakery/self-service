@@ -3,12 +3,10 @@ import { RootState } from "../rootConfig";
 
 interface State {
   token: string | null;
-  link: string;
 }
 
 const initialState: State = {
   token: null,
-  link: "/home",
 };
 
 export const authReducer = createSlice({
@@ -24,8 +22,7 @@ export const authReducer = createSlice({
   },
 });
 
-export const tokenSelector = (state: RootState) => state.auth.token;
-export const linkSelector = (state: RootState) => state.auth.link;
+export const tokenSelector = (state: RootState) => state?.auth?.token;
 
 export const { loginHandler, logoutHandler } = authReducer.actions;
 

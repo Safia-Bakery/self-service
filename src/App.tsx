@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
-import BodyFrame from "@/components/BodyFrame";
+
 import useLogin from "@/hooks/login";
 import Loading from "./components/Loader";
 import { useAppDispatch, useAppSelector } from "./store/rootConfig";
@@ -11,21 +11,27 @@ import useOrders from "./hooks/useOrders";
 import { cartSelector, handleItems } from "./store/reducers/cart";
 import { BaseCartType, OrderStatus } from "./utils/types";
 
+import BodyFrame from "@/pages/BodyFrame";
+
 const App = () => {
-  const { isLoading, error, refetch: loginRefetch } = useLogin();
+  const {
+    isLoading,
+    isError: loginError,
+    refetch: loginRefetch,
+    isFetching: logining,
+  } = useLogin();
   const dispatch = useAppDispatch();
   const token = useAppSelector(tokenSelector);
   const lang = useAppSelector(langSelector);
   const listItems = useAppSelector(cartSelector);
+  const { data, isError: orderError, isLoading: orderLoading } = useOrders({});
 
   useEffect(() => {
     i18n.changeLanguage(lang);
   }, [lang]);
 
-  const { data, error: orderError } = useOrders({});
-
   useEffect(() => {
-    if (data)
+    if (!!data && !!token) {
       dispatch(
         handleItems(
           data?.reduce((acc: BaseCartType, item) => {
@@ -34,14 +40,23 @@ const App = () => {
           }, {})
         )
       );
-  }, [data]);
+    }
+  }, [data, token]);
 
   useEffect(() => {
     if (!token) loginRefetch();
   }, [token]);
 
-  if (error || orderError) dispatch(logoutHandler());
-  if (isLoading) return <Loading absolute />;
+  if (!!loginError || !!orderError) dispatch(logoutHandler());
+
+  if (
+    ((logining || isLoading) && !loginError) ||
+    orderLoading ||
+    (!Object.values(listItems).length && !!data) ||
+    !lang ||
+    (!token && !loginError)
+  )
+    return <Loading absolute />;
 
   return (
     <div className="bg-mainBg h-screen overflow-hidden flex flex-col">

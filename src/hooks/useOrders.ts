@@ -4,7 +4,7 @@ import { useAppSelector } from "@/store/rootConfig";
 import { tokenSelector } from "@/store/reducers/auth";
 import { OrderTypes } from "@/utils/types";
 
-export const useOrders = ({ enabled }: { enabled?: boolean }) => {
+export const useOrders = ({ enabled = true }: { enabled?: boolean }) => {
   const token = useAppSelector(tokenSelector);
 
   return useQuery({
@@ -18,7 +18,6 @@ export const useOrders = ({ enabled }: { enabled?: boolean }) => {
         .then(({ data: response }) => response as OrderTypes[]),
     enabled: enabled && !!token,
     refetchOnMount: true,
-    retry: 3,
   });
 };
 export default useOrders;

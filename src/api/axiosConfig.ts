@@ -52,9 +52,9 @@ class BaseAPIClient {
 
   private handleRequestError = (error: AxiosError): Promise<never> => {
     if (axios.isAxiosError(error) && error.response) {
-      // if (error.response.status === 403 || error.response.status === 401) {
-      //   this.store?.dispatch(logoutHandler());
-      // }
+      if (error.response.status === 403 || error.response.status === 401) {
+        this.store?.dispatch(logoutHandler());
+      }
     }
 
     // Reject the promise with the error

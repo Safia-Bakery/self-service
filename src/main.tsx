@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import BaseAPIClient from "./api/axiosConfig.ts";
@@ -18,15 +17,13 @@ export const baseURL = "http://10.0.3.189:9042"; // todo
 export default new BaseAPIClient(baseURL, store);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistor} loading={<Loading absolute />}>
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </QueryClientProvider>
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <PersistGate persistor={persistor} loading={<Loading absolute />}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </QueryClientProvider>
+    </PersistGate>
+  </Provider>
 );

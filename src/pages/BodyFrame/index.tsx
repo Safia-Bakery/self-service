@@ -1,7 +1,7 @@
-import OrdersList from "../OrdersList";
+import OrdersList from "../../components/OrdersList";
 import useOrders from "@/hooks/useOrders";
-import Loading from "../Loader";
-import ShowOrder from "../ShowOrder";
+import Loading from "../../components/Loader";
+import ShowOrder from "../../components/ShowOrder";
 
 const BodyFrame = () => {
   const { isLoading } = useOrders({});

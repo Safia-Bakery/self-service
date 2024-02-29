@@ -9,6 +9,8 @@ const localization = {
       receive: "Принять",
       collected: "Собрано",
       select_order: "Выберите заказ",
+      error_descr:
+        "Что-то пошло не так, проблемы может быть с кассой или поменяйте IP на поисковике ",
     },
   },
   uz: {
