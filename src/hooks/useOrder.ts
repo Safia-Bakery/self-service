@@ -24,6 +24,7 @@ export const useOrder = ({
         .then(({ data: response }) => response as OrderTypes),
     enabled: enabled && !!token,
     refetchOnMount: true,
+    retry: 2,
   });
 };
 export default useOrder;

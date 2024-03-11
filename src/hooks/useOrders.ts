@@ -18,6 +18,7 @@ export const useOrders = ({ enabled = true }: { enabled?: boolean }) => {
         .then(({ data: response }) => response as OrderTypes[]),
     enabled: enabled && !!token,
     refetchOnMount: true,
+    retry: 2,
   });
 };
 export default useOrders;

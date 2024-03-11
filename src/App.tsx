@@ -9,7 +9,6 @@ import { langSelector } from "./store/reducers/language";
 import i18n from "./localization";
 import useOrders from "./hooks/useOrders";
 import { cartSelector, handleItems } from "./store/reducers/cart";
-import { BaseCartType, OrderStatus } from "./utils/types";
 
 import BodyFrame from "@/pages/BodyFrame";
 
@@ -32,14 +31,7 @@ const App = () => {
 
   useEffect(() => {
     if (!!data && !!token) {
-      dispatch(
-        handleItems(
-          data?.reduce((acc: BaseCartType, item) => {
-            acc[item.Id] = OrderStatus.new;
-            return acc;
-          }, {})
-        )
-      );
+      dispatch(handleItems(data));
     }
   }, [data, token]);
 
@@ -52,7 +44,7 @@ const App = () => {
   if (
     ((logining || isLoading) && !loginError) ||
     orderLoading ||
-    (!Object.values(listItems).length && !!data) ||
+    // (!Object.values(listItems).length && !!data) ||
     !lang ||
     (!token && !loginError)
   )

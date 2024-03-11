@@ -26,7 +26,10 @@ const ShowOrder = () => {
   const handleStatus = () => {
     if (cart[id!] === OrderStatus.new)
       dispatch(handleCart({ id: id!, status: OrderStatus.received }));
-    else dispatch(handleCart({ id: id!, status: OrderStatus.collected }));
+    else {
+      removeParams(["id"]);
+      dispatch(handleCart({ id: id!, status: OrderStatus.collected }));
+    }
   };
 
   useEffect(() => {

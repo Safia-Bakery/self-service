@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../rootConfig";
-import { BaseCartType, OrderStatus } from "@/utils/types";
+import { BaseCartType, OrderStatus, OrderTypes } from "@/utils/types";
 
 interface State {
   orders: BaseCartType;
@@ -14,8 +14,15 @@ export const statusReducer = createSlice({
   name: "toggler",
   initialState,
   reducers: {
-    handleItems: (state, { payload }: PayloadAction<BaseCartType>) => {
-      state.orders = payload;
+    handleItems: (state, { payload }: PayloadAction<OrderTypes[]>) => {
+      const items = payload?.reduce((acc: BaseCartType, item) => {
+        acc[item.Id] = !state.orders[item.Id]
+          ? OrderStatus.new
+          : state.orders[item.Id];
+        return acc;
+      }, {});
+
+      state.orders = { ...state.orders, ...items };
     },
     handleCart: (
       state,
@@ -23,10 +30,13 @@ export const statusReducer = createSlice({
     ) => {
       state.orders[payload.id] = payload.status;
     },
+    clearItems: (state) => {
+      state.orders = {};
+    },
   },
 });
 
 export const cartSelector = (state: RootState) => state.status.orders;
 
-export const { handleCart, handleItems } = statusReducer.actions;
+export const { handleCart, handleItems, clearItems } = statusReducer.actions;
 export default statusReducer.reducer;
