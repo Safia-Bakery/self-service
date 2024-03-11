@@ -8,7 +8,7 @@ import { logoutHandler, tokenSelector } from "./store/reducers/auth";
 import { langSelector } from "./store/reducers/language";
 import i18n from "./localization";
 import useOrders from "./hooks/useOrders";
-import { cartSelector, handleItems } from "./store/reducers/cart";
+import { handleItems } from "./store/reducers/cart";
 
 import BodyFrame from "@/pages/BodyFrame";
 
@@ -22,7 +22,6 @@ const App = () => {
   const dispatch = useAppDispatch();
   const token = useAppSelector(tokenSelector);
   const lang = useAppSelector(langSelector);
-  const listItems = useAppSelector(cartSelector);
   const { data, isError: orderError, isLoading: orderLoading } = useOrders({});
 
   useEffect(() => {
@@ -44,7 +43,6 @@ const App = () => {
   if (
     ((logining || isLoading) && !loginError) ||
     orderLoading ||
-    // (!Object.values(listItems).length && !!data) ||
     !lang ||
     (!token && !loginError)
   )

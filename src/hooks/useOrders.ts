@@ -19,6 +19,8 @@ export const useOrders = ({ enabled = true }: { enabled?: boolean }) => {
     enabled: enabled && !!token,
     refetchOnMount: true,
     retry: 2,
+    refetchInterval: 10000,
+    refetchOnWindowFocus: true,
   });
 };
 export default useOrders;
