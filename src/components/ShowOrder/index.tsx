@@ -54,7 +54,7 @@ const ShowOrder = () => {
                     {/* {item.Name}(x{item.Amount}): */}
                     {t("dish")}:
                   </span>
-                  <ul className="w-full">
+                  <ul className="w-full items-center flex ">
                     {/* {item.Modifiers.map((modifier) => (
                       <li
                         key={modifier.Id}
