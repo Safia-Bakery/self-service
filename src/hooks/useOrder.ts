@@ -18,7 +18,7 @@ export const useOrder = ({
     queryFn: () =>
       apiClient
         .get({
-          url: `/api/orders/${id}`,
+          url: `/api/kitchenorders/${id}`,
           params: { key: token },
         })
         .then(({ data: response }) => response as OrderTypes),
