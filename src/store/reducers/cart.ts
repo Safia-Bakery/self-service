@@ -17,9 +17,8 @@ export const statusReducer = createSlice({
     handleItems: (state, { payload }: PayloadAction<OrderTypes[]>) => {
       const items = payload?.reduce((acc: BaseCartType, item) => {
         acc[item.Id] = !state.orders[item.Id]
-          ? // ? OrderStatus.new
-            { ...state.orders[item.Id], orderStatus: OrderStatus.new }
-          : state.orders[item.Id];
+          ? { ...item, orderStatus: OrderStatus.new }
+          : { ...item, orderStatus: state.orders[item.Id].orderStatus };
         return acc;
       }, {});
 

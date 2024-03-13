@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
-
 import useLogin from "@/hooks/login";
 import Loading from "./components/Loader";
 import { useAppDispatch, useAppSelector } from "./store/rootConfig";
@@ -8,8 +7,7 @@ import { logoutHandler, tokenSelector } from "./store/reducers/auth";
 import { langSelector } from "./store/reducers/language";
 import i18n from "./localization";
 import useOrders from "./hooks/useOrders";
-import { handleItems } from "./store/reducers/cart";
-
+import { cartSelector, handleItems } from "./store/reducers/cart";
 import BodyFrame from "@/pages/BodyFrame";
 
 const App = () => {
@@ -23,15 +21,14 @@ const App = () => {
   const token = useAppSelector(tokenSelector);
   const lang = useAppSelector(langSelector);
   const { data, isError: orderError, isLoading: orderLoading } = useOrders({});
+  const itemsList = useAppSelector(cartSelector);
 
   useEffect(() => {
     i18n.changeLanguage(lang);
   }, [lang]);
 
   useEffect(() => {
-    if (!!data && !!token) {
-      dispatch(handleItems(data));
-    }
+    if (!!data?.length && !!token) dispatch(handleItems(data));
   }, [data, token]);
 
   useEffect(() => {
@@ -44,7 +41,8 @@ const App = () => {
     ((logining || isLoading) && !loginError) ||
     orderLoading ||
     !lang ||
-    (!token && !loginError)
+    (!token && !loginError) ||
+    (!!data?.length && !Object.keys(itemsList).length)
   )
     return <Loading absolute />;
 
