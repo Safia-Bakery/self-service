@@ -32,7 +32,9 @@ const OrdersList = () => {
   return (
     <div className="flex w-full overflow-x-auto overflow-y-visible lg:py-4 py-2">
       {data
-        ?.filter((item) => itemsList[item.Id] !== OrderStatus.collected)
+        ?.filter(
+          (item) => itemsList[item.Id].orderStatus !== OrderStatus.collected
+        )
         .map((order, idx) => (
           <div
             key={idx}
