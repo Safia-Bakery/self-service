@@ -3,6 +3,7 @@ import apiClient from "@/main";
 import { useAppSelector } from "@/store/rootConfig";
 import { tokenSelector } from "@/store/reducers/auth";
 import { OrderTypes } from "@/utils/types";
+import { EPresetTimes } from "@/utils/helpers";
 
 export const useOrders = ({ enabled = true }: { enabled?: boolean }) => {
   const token = useAppSelector(tokenSelector);
@@ -19,7 +20,7 @@ export const useOrders = ({ enabled = true }: { enabled?: boolean }) => {
     enabled: enabled && !!token,
     refetchOnMount: true,
     retry: 2,
-    refetchInterval: 10000,
+    refetchInterval: EPresetTimes.MINUTE,
     refetchOnWindowFocus: true,
   });
 };

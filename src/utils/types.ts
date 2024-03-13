@@ -9,7 +9,11 @@ export enum OrderStatus {
   collected,
 }
 
-export type BaseCartType = { [key: string]: number };
+export interface CartType extends OrderTypes {
+  orderStatus: number;
+}
+
+export type BaseCartType = { [key: string]: CartType };
 
 export interface OrderTypes {
   Id: string;
