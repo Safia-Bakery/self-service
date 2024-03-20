@@ -33,49 +33,90 @@ export interface OrderTypes {
   Cashier: string;
   Table: string;
   TabName: null;
-  Guests: [
-    {
-      Id: string;
-      Rank: number;
-      Name: string;
-      Items: [
-        {
-          Id: string;
-          Amount: number;
-          Price: number;
-          Cost: number;
-          Deleted: false;
-          PrintTime: string;
-          CookingStartTime: string;
-          CookingFinishTime: null;
-          CookingTime: string;
-          Size: null;
-          ServeTime: null;
-          Name: string;
-          Product: string;
-          Comment: null;
-          Status: number;
-          Course: number;
-          Modifiers: [
-            {
-              Id: string;
-              Amount: number;
-              Price: number;
-              Cost: number;
-              Deleted: false;
-              Name: string;
-              Product: string;
-              AmountIndependentOfParentAmount: false;
-            }
-          ];
-          IsCompound: boolean;
-          PrimaryComponent: null;
-          SecondaryComponent: null;
-          Template: null;
-        }
-      ];
-    }
-  ];
+  // Guests: [
+  //   {
+  //     Id: string;
+  //     Rank: number;
+  //     Name: string;
+  //     Items: [
+  //       {
+  //         Id: string;
+  //         Amount: number;
+  //         Price: number;
+  //         Cost: number;
+  //         Deleted: false;
+  //         PrintTime: string;
+  //         CookingStartTime: string;
+  //         CookingFinishTime: null;
+  //         CookingTime: string;
+  //         Size: null;
+  //         ServeTime: null;
+  //         Name: string;
+  //         Product: string;
+  //         Comment: null;
+  //         Status: number;
+  //         Course: number;
+  //         Modifiers: [
+  //           {
+  //             Id: string;
+  //             Amount: number;
+  //             Price: number;
+  //             Cost: number;
+  //             Deleted: false;
+  //             Name: string;
+  //             Product: string;
+  //             AmountIndependentOfParentAmount: false;
+  //           }
+  //         ];
+  //         IsCompound: boolean;
+  //         PrimaryComponent: null;
+  //         SecondaryComponent: null;
+  //         Template: null;
+  //       }
+  //     ];
+  //   }
+  // ];
+  Items: {
+    Id: string;
+    Amount: number;
+    ProductName: string;
+    Product: string;
+    KitchenName: string;
+    Kitchen: string;
+    Deleted: false;
+    Course: number;
+    ServeGroupNumber: number;
+    IsCookingStarted: true;
+    PrintTime: string;
+    EstimatedCookingBeginTime: string;
+    Processing1BeginTime: null;
+    Processing2BeginTime: null;
+    Processing3BeginTime: null;
+    Processing4BeginTime: null;
+    ProcessingCompleteTime: null;
+    ServeTime: null;
+    ProcessingStatus: number;
+    CookingTime: string;
+    Size: null;
+    Comment: null;
+    Modifiers: [
+      {
+        Id: string;
+        Amount: number;
+        Price: number;
+        Cost: number;
+        Deleted: false;
+        Name: string;
+        Product: string;
+        AmountIndependentOfParentAmount: false;
+      }
+    ];
+    IsCompound: false;
+    PrimaryComponent: null;
+    SecondaryComponent: null;
+    Template: null;
+  }[];
+
   IsDeliveryOrder: false;
   Customers: [];
   Delivery: null;
