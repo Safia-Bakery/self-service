@@ -6,6 +6,7 @@ import useQueryString from "@/hooks/custom/useQueryString";
 import { cartSelector } from "@/store/reducers/cart";
 import { useAppSelector } from "@/store/rootConfig";
 import { OrderStatus } from "@/utils/types";
+import MakeSound from "../MakeSound";
 
 const OrdersList = () => {
   const { t } = useTranslation();
@@ -43,6 +44,8 @@ const OrdersList = () => {
             </span>
           </div>
         ))}
+
+      <MakeSound />
     </div>
   );
 };

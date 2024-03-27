@@ -10,6 +10,7 @@ export enum OrderStatus {
 }
 
 export interface CartType extends OrderTypes {
+  // PrintTime(PrintTime: any): unknown;
   orderStatus: number;
 }
 
@@ -18,109 +19,65 @@ export type BaseCartType = { [key: string]: CartType };
 export interface OrderTypes {
   Id: string;
   Number: number;
-  Status: number;
-  FullSum: number;
-  ResultSum: number;
-  OriginName: null | string;
-  IsBanquetOrder: false;
-  OpenTime: string;
-  BillTime: string;
-  ProcessedPaymentsSum: number;
   WaiterName: string;
-  CashierName: string;
   TableNum: number;
   Waiter: string;
-  Cashier: string;
   Table: string;
-  TabName: null;
-  // Guests: [
-  //   {
-  //     Id: string;
-  //     Rank: number;
-  //     Name: string;
-  //     Items: [
-  //       {
-  //         Id: string;
-  //         Amount: number;
-  //         Price: number;
-  //         Cost: number;
-  //         Deleted: false;
-  //         PrintTime: string;
-  //         CookingStartTime: string;
-  //         CookingFinishTime: null;
-  //         CookingTime: string;
-  //         Size: null;
-  //         ServeTime: null;
-  //         Name: string;
-  //         Product: string;
-  //         Comment: null;
-  //         Status: number;
-  //         Course: number;
-  //         Modifiers: [
-  //           {
-  //             Id: string;
-  //             Amount: number;
-  //             Price: number;
-  //             Cost: number;
-  //             Deleted: false;
-  //             Name: string;
-  //             Product: string;
-  //             AmountIndependentOfParentAmount: false;
-  //           }
-  //         ];
-  //         IsCompound: boolean;
-  //         PrimaryComponent: null;
-  //         SecondaryComponent: null;
-  //         Template: null;
-  //       }
-  //     ];
-  //   }
-  // ];
-  Items: {
-    Id: string;
-    Amount: number;
-    ProductName: string;
-    Product: string;
-    KitchenName: string;
-    Kitchen: string;
-    Deleted: false;
-    Course: number;
-    ServeGroupNumber: number;
-    IsCookingStarted: true;
-    PrintTime: string;
-    EstimatedCookingBeginTime: string;
-    Processing1BeginTime: null;
-    Processing2BeginTime: null;
-    Processing3BeginTime: null;
-    Processing4BeginTime: null;
-    ProcessingCompleteTime: null;
-    ServeTime: null;
-    ProcessingStatus: number;
-    CookingTime: string;
-    Size: null;
-    Comment: null;
-    Modifiers: [
-      {
-        Id: string;
-        Amount: number;
-        Price: number;
-        Cost: number;
-        Deleted: false;
-        Name: string;
-        Product: string;
-        AmountIndependentOfParentAmount: false;
-      }
-    ];
-    IsCompound: false;
-    PrimaryComponent: null;
-    SecondaryComponent: null;
-    Template: null;
-  }[];
-
-  IsDeliveryOrder: false;
-  Customers: [];
-  Delivery: null;
+  Items: [
+    {
+      Id: string;
+      Amount: number;
+      ProductName: string;
+      Product: string;
+      KitchenName: string;
+      Kitchen: string;
+      Deleted: false;
+      Course: number;
+      ServeGroupNumber: number;
+      IsCookingStarted: true;
+      PrintTime: string;
+      EstimatedCookingBeginTime: string;
+      Processing1BeginTime: null;
+      Processing2BeginTime: null;
+      Processing3BeginTime: null;
+      Processing4BeginTime: null;
+      ProcessingCompleteTime: null;
+      ServeTime: null;
+      ProcessingStatus: number;
+      CookingTime: string;
+      Size: null;
+      Comment: null;
+      Modifiers: [
+        {
+          Id: string;
+          Amount: number;
+          AmountIndependentOfParentAmount: false;
+          ProductName: string;
+          Product: string;
+          KitchenName: string;
+          Kitchen: string;
+          Deleted: false;
+          EstimatedCookingBeginTime: string;
+          Processing1BeginTime: null;
+          Processing2BeginTime: null;
+          Processing3BeginTime: null;
+          Processing4BeginTime: null;
+          ProcessingCompleteTime: null;
+          ServeTime: null;
+          ProcessingStatus: 0;
+          CookingTime: null;
+          IsSeparate: false;
+        }
+      ];
+      IsCompound: false;
+      PrimaryComponent: null;
+      SecondaryComponent: null;
+      Template: null;
+    }
+  ];
+  BaseOrder: string;
   OrderType: null;
   OrderServiceType: number;
+  IsDeliverySelfService: false;
   Url: string;
 }
