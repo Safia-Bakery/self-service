@@ -9,6 +9,7 @@ const localization = {
       receive: "Принять",
       collected: "Собрано",
       select_order: "Выберите заказ",
+      empty_list: "Список пуст",
       error_descr:
         "Что-то пошло не так, проблемы может быть с кассой или поменяйте IP на поисковике ",
     },
@@ -23,6 +24,7 @@ const localization = {
       receive: "Qabul qilish",
       collected: "Yeg'ildi",
       select_order: "Buyurtmani tanlang",
+      empty_list: "Ro'yxat bo'sh",
     },
   },
 };
