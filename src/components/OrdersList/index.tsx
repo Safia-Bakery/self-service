@@ -48,11 +48,7 @@ const OrdersList = () => {
         </div>
       ))}
 
-      {!activeOrders.length && (
-        <div className="flex w-full overflow-x-auto overflow-y-visible lg:py-4 py-2">
-          <EmptyList />
-        </div>
-      )}
+      {!activeOrders.length && <EmptyList />}
 
       <MakeSound />
     </div>
