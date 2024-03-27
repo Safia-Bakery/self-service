@@ -66,7 +66,7 @@ const ShowOrder = () => {
         <div className="flex flex-1 items-end flex-col">
           <div className="flex flex-col items-center lg:gap-3 gap-1">
             <span className="text-textGray lg:text-3xl text-lg">
-              {/* {t("receiving_time")}: {dayjs(cart[id]?.PrintTime).format("HH:mm")} */}
+              {/* {t("receiving_time")}: {dayjs(cart[id]?.PrintTime).format("HH:mm")} todo */}
             </span>
 
             <div className="bg-btnGray rounded-[20px] lg:text-5xl text-xl lg:px-5 px-3  lg:py-3 py-1">

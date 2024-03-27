@@ -41,8 +41,8 @@ const App = () => {
     ((logining || isLoading) && !loginError) ||
     orderLoading ||
     !lang ||
-    (!token && !loginError) ||
-    (!!data?.length && !Object.keys(itemsList).length)
+    (!token && !loginError)
+    // || (!!data?.length && !Object.keys(itemsList).length)
   )
     return <Loading absolute />;
 
