@@ -1,14 +1,10 @@
 import { cartSelector } from "@/store/reducers/cart";
 import { useAppSelector } from "@/store/rootConfig";
-import { CartType } from "@/utils/types";
 import { useEffect, useRef } from "react";
 
-interface Props {
-  data?: [string, CartType][];
-}
-
-const MakeSound: React.FC<Props> = ({ data }) => {
+const MakeSound: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const itemsList = useAppSelector(cartSelector);
 
   const playSound = () => {
     if (audioRef.current) {
@@ -22,7 +18,7 @@ const MakeSound: React.FC<Props> = ({ data }) => {
       return Reflect.set(target, prop, value);
     },
   };
-  const proxiedObj = new Proxy(data?.[1], handler);
+  const proxiedObj = new Proxy(itemsList, handler);
 
   useEffect(() => {
     if (proxiedObj) playSound();
