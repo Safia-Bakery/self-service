@@ -17,9 +17,9 @@ const OrdersList = () => {
 
   const itemsList = useAppSelector(cartSelector);
 
-  const activeOrders = Object.entries(itemsList)?.filter(
-    (item) => item[1]?.orderStatus !== OrderStatus.collected
-  );
+  const activeOrders = Object.entries(itemsList)
+    ?.filter((item) => item[1]?.orderStatus !== OrderStatus.collected)
+    .reverse();
 
   const renderOrderList = (item: string) =>
     id == item
