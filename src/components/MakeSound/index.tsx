@@ -5,24 +5,19 @@ import { useEffect, useRef } from "react";
 const MakeSound: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const itemsList = useAppSelector(cartSelector);
-
-  const playSound = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
-    }
-  };
-
-  const handler = {
-    set(target: any, prop: any, value: any) {
-      //   console.log(`Property '${prop}' added with value '${value}'`);
-      return Reflect.set(target, prop, value);
-    },
-  };
-  const proxiedObj = new Proxy(itemsList, handler);
+  const previousItemsListLength = useRef(Object.keys(itemsList).length);
 
   useEffect(() => {
-    if (proxiedObj) playSound();
-  }, [proxiedObj]);
+    const currentItemsListLength = Object.keys(itemsList).length;
+
+    if (currentItemsListLength > previousItemsListLength.current) {
+      if (audioRef.current) {
+        audioRef.current.play();
+      }
+    }
+
+    previousItemsListLength.current = currentItemsListLength;
+  }, [itemsList]);
 
   return (
     <div className="hidden">
