@@ -1,18 +1,17 @@
 import { useTranslation } from "react-i18next";
 import Button from "../Button";
-import dayjs from "dayjs";
 import useUpdateQueryStr from "@/hooks/custom/useUpdateQueryStr";
 import { Fragment, useEffect } from "react";
 import { OrderStatus } from "@/utils/types";
 import { useAppDispatch, useAppSelector } from "@/store/rootConfig";
 import { cartSelector, handleCart } from "@/store/reducers/cart";
 import NotSelected from "../NotSelected";
-import { useRemoveParams } from "@/hooks/custom/useCustomNavigate";
+import { useNavigate } from "react-router-dom";
 
 const ShowOrder = () => {
   const { t } = useTranslation();
   const id = useUpdateQueryStr("id");
-  const removeParams = useRemoveParams();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const cart = useAppSelector(cartSelector);
 
@@ -25,13 +24,13 @@ const ShowOrder = () => {
     if (cart[id!].orderStatus === OrderStatus.new)
       dispatch(handleCart({ id: id!, status: OrderStatus.received }));
     else {
-      removeParams(["id"]);
+      navigate("/", { replace: true });
       dispatch(handleCart({ id: id!, status: OrderStatus.collected }));
     }
   };
 
   useEffect(() => {
-    if (id && !cart[id]) removeParams(["id"]);
+    if (id && !cart[id]) navigate("/", { replace: true });
   }, [cart]);
 
   if (!id) return <NotSelected />;
