@@ -20,7 +20,7 @@ export const useOrders = ({ enabled = true }: { enabled?: boolean }) => {
     enabled: enabled && !!token,
     refetchOnMount: true,
     retry: 2,
-    refetchInterval: EPresetTimes.MINUTE,
+    refetchInterval: EPresetTimes.SECOND * 10,
     refetchOnWindowFocus: true,
   });
 };
