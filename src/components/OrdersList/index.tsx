@@ -43,7 +43,7 @@ const OrdersList = () => {
           )}
         >
           <span className="text-white lg:text-4xl text-2xl">
-            {t("order")} №{order[1].Number}
+            {t("order")} №{order[1].Number % 1000}
           </span>
         </div>
       ))}
