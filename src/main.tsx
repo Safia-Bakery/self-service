@@ -10,7 +10,7 @@ import { queryClient } from "./utils/helpers.ts";
 import Loading from "./components/Loader/index.tsx";
 import "./index.scss";
 
-export const baseURL = "http://localhost:9042"; // todo
+export const baseURL = "http://192.168.25.181:5173:9042"; // todo
 // export const baseURL = "http://10.0.3.73:9042"; // todo
 // export const baseURL = "http://10.0.3.189:9042";
 
