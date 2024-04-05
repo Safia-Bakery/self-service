@@ -15,11 +15,6 @@ const ShowOrder = () => {
   const dispatch = useAppDispatch();
   const cart = useAppSelector(cartSelector);
 
-  // const { isLoading: orderLoading, data: order } = useOrder({
-  //   id: id!,
-  //   enabled: !!id,
-  // });
-
   const handleStatus = () => {
     if (cart[id!].orderStatus === OrderStatus.new)
       dispatch(handleCart({ id: id!, status: OrderStatus.received }));
@@ -30,8 +25,8 @@ const ShowOrder = () => {
   };
 
   useEffect(() => {
-    if (id && !cart[id]) navigate("/", { replace: true });
-  }, [cart]);
+    if (id && !cart?.[id]) navigate("/", { replace: true });
+  }, [cart, id]);
 
   if (!id) return <NotSelected />;
 
@@ -76,12 +71,12 @@ const ShowOrder = () => {
       </div>
 
       <Button
-        progress={cart[id].orderStatus === OrderStatus.new}
-        secondary={cart[id].orderStatus === OrderStatus.received}
-        collected={cart[id].orderStatus === OrderStatus.collected}
+        progress={cart[id]?.orderStatus === OrderStatus.new}
+        secondary={cart[id]?.orderStatus === OrderStatus.received}
+        collected={cart[id]?.orderStatus === OrderStatus.collected}
         onClick={handleStatus}
       >
-        {cart[id].orderStatus === OrderStatus.new
+        {cart[id]?.orderStatus === OrderStatus.new
           ? t("receive")
           : t("collected")}
       </Button>
