@@ -22,7 +22,7 @@ const MakeSound: React.FC = () => {
   return (
     <div className="hidden">
       <audio ref={audioRef}>
-        <source src="/assets/sound/notice.wav" type="audio/mpeg" />
+        <source src="/assets/sound/notice.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </div>
