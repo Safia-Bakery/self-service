@@ -31,14 +31,14 @@ const OrdersList = () => {
   const handleNavigate = (id: string | number) => navigateParams({ id });
 
   return (
-    <div className="flex w-full overflow-x-auto overflow-y-visible lg:py-4 py-2">
+    <div className="w-full grid grid-cols-3 lg:py-4 py-2 gap-7 px-2">
       {activeOrders.map((order, idx) => (
         <div
           key={idx}
           onClick={() => handleNavigate(order[0])}
           ref={listref}
           className={cl(
-            "flex items-center cursor-pointer justify-center transition-all shadow-orderCard rounded-md lg:min-w-96 min-w-60 lg:h-40 h-24 mx-2",
+            "flex items-center cursor-pointer justify-center transition-all shadow-orderCard rounded-md lg:min-w-96 min-w-60 lg:h-40 h-24",
             renderOrderList(order[0]!)
           )}
         >

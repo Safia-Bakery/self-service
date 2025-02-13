@@ -12,9 +12,7 @@ import "./index.scss";
 
 const LOCAL_IP = window.location.hostname;
 
-export const baseURL = `http://${LOCAL_IP}:9042`; // todo
-// export const baseURL = "http://10.0.3.73:9042"; // todo
-// export const baseURL = "http://10.0.3.189:9042";
+export const baseURL = `http://${LOCAL_IP}:9042`;
 
 export default new BaseAPIClient(baseURL, store);
 
