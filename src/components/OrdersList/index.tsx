@@ -38,7 +38,7 @@ const OrdersList = () => {
           onClick={() => handleNavigate(order[0])}
           ref={listref}
           className={cl(
-            "flex items-center cursor-pointer justify-center transition-all shadow-orderCard rounded-md lg:min-w-96 min-w-60 lg:h-40 h-24",
+            "flex items-center cursor-pointer justify-center transition-all shadow-orderCard rounded-md lg:min-w-80 min-w- lg:h-40 h-24",
             renderOrderList(order[0]!)
           )}
         >
