@@ -23,6 +23,8 @@ const App = () => {
   const { data, isError: orderError, isLoading: orderLoading } = useOrders({});
   const itemsList = useAppSelector(cartSelector);
 
+  console.log(data, "data");
+
   useEffect(() => {
     i18n.changeLanguage(lang);
   }, [lang]);
