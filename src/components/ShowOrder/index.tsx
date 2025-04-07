@@ -47,27 +47,30 @@ const ShowOrder = () => {
       <div className="bg-white lg:p-6 p-3 rounded-lg flex-1 flex h-full flex-col overflow-hidden lg:mt-4 mt-2">
         <div className="flex justify-between w-full flex-1 overflow-hidden lg:mb-8 mb-4">
           <div className="overflow-y-auto max-w-[45lvw] h-full w-full pr-2 flex flex-col flex-1">
-            {cart[id]?.Items?.map((guest) => (
-              <Fragment key={guest.Id}>
-                <div
-                  key={guest.Id}
-                  className="w-full flex border-b border-b-borderGray last:border-none"
-                >
-                  <span className="text-textGray lg:text-4xl text-xl py-2 mr-2">
-                    {t("dish")}:
-                  </span>
-                  <ul className="w-full items-center flex ">
-                    <li
-                      key={guest.Id}
-                      className="flex justify-between items-center lg:text-4xl text-xl w-full font-normal lg:py-2 py-1"
-                    >
-                      <span>{guest.ProductName}</span>
-                      <span>x{guest.Amount}</span>
-                    </li>
-                  </ul>
-                </div>
-              </Fragment>
-            ))}
+            {cart[id].Guests.map((guest) =>
+              guest.Items?.map((item) => (
+                <Fragment key={item.Id}>
+                  <div
+                    key={item.Id}
+                    className="w-full flex border-b border-b-borderGray last:border-none"
+                  >
+                    <span className="text-textGray lg:text-4xl text-xl py-2 mr-2">
+                      {t("dish")}:
+                    </span>
+                    <ul className="w-full items-center flex ">
+                      <li
+                        key={item.Id}
+                        className="flex justify-between items-center lg:text-4xl text-xl w-full font-normal lg:py-2 py-1"
+                      >
+                        <span>{item.Name}</span>
+                        <span>x{item.Amount}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </Fragment>
+              ))
+            )}
+            {/* {cart[id]?.} */}
           </div>
 
           <div className="flex flex-1 items-end flex-col">

@@ -18,66 +18,64 @@ export type BaseCartType = { [key: string]: CartType };
 
 export interface OrderTypes {
   Id: string;
-  Number: number;
-  WaiterName: string;
-  TableNum: number;
-  Waiter: string;
+  Number: 69806;
+  Status: 0;
+  FullSum: 339000.0;
+  ResultSum: 339000.0;
+  OriginName: string;
+  IsBanquetOrder: false;
+  OpenTime: string;
+  BillTime: null;
+  ProcessedPaymentsSum: 0.0;
+  WaiterName: null;
+  CashierName: null;
+  TableNum: 1;
+  Waiter: null;
+  Cashier: null;
   Table: string;
-  Items: [
+  TabName: null;
+  Guests: [
     {
       Id: string;
-      Amount: number;
-      ProductName: string;
-      Product: string;
-      KitchenName: string;
-      Kitchen: string;
-      Deleted: false;
-      Course: number;
-      ServeGroupNumber: number;
-      IsCookingStarted: true;
-      PrintTime: string;
-      EstimatedCookingBeginTime: string;
-      Processing1BeginTime: null;
-      Processing2BeginTime: null;
-      Processing3BeginTime: null;
-      Processing4BeginTime: null;
-      ProcessingCompleteTime: null;
-      ServeTime: null;
-      ProcessingStatus: number;
-      CookingTime: string;
-      Size: null;
-      Comment: null;
-      Modifiers: [
+      Rank: 0;
+      Name: string;
+      Items: [
         {
           Id: string;
-          Amount: number;
-          AmountIndependentOfParentAmount: false;
-          ProductName: string;
-          Product: string;
-          KitchenName: string;
-          Kitchen: string;
+          Amount: 1.0;
+          Price: 339000.0;
+          Cost: 339000.0;
           Deleted: false;
-          EstimatedCookingBeginTime: string;
-          Processing1BeginTime: null;
-          Processing2BeginTime: null;
-          Processing3BeginTime: null;
-          Processing4BeginTime: null;
-          ProcessingCompleteTime: null;
+          PrintTime: string;
+          CookingStartTime: string;
+          CookingFinishTime: string;
+          CookingTime: string;
+          Size: null;
           ServeTime: null;
-          ProcessingStatus: 0;
-          CookingTime: null;
-          IsSeparate: false;
+          Name: string;
+          Product: string;
+          Comment: null;
+          Status: 3;
+          Course: 1;
+          Modifiers: [];
+          IsCompound: false;
+          PrimaryComponent: null;
+          SecondaryComponent: null;
+          Template: null;
         }
       ];
-      IsCompound: false;
-      PrimaryComponent: null;
-      SecondaryComponent: null;
-      Template: null;
     }
   ];
-  BaseOrder: string;
-  OrderType: null;
-  OrderServiceType: number;
-  IsDeliverySelfService: false;
+  IsDeliveryOrder: true;
+  Customers: [
+    {
+      Name: string;
+      Surname: string;
+      Url: string;
+    }
+  ];
+  Delivery: string;
+  OrderType: string;
+  OrderServiceType: 2;
   Url: string;
 }
