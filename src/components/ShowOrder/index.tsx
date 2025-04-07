@@ -47,7 +47,7 @@ const ShowOrder = () => {
       <div className="bg-white lg:p-6 p-3 rounded-lg flex-1 flex h-full flex-col overflow-hidden lg:mt-4 mt-2">
         <div className="flex justify-between w-full flex-1 overflow-hidden lg:mb-8 mb-4">
           <div className="overflow-y-auto max-w-[45lvw] h-full w-full pr-2 flex flex-col flex-1">
-            {cart[id]?.Items.map((guest) => (
+            {cart[id]?.Items?.map((guest) => (
               <Fragment key={guest.Id}>
                 <div
                   key={guest.Id}

@@ -13,7 +13,7 @@ export const useOrders = ({ enabled = true }: { enabled?: boolean }) => {
     queryFn: () =>
       apiClient
         .get({
-          url: "/api/orders?top=15",
+          url: "/api/orders?$top=15",
           params: { key: token },
         })
         .then(({ data: response }) => response as OrderTypes[]),

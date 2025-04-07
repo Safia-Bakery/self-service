@@ -21,7 +21,6 @@ const App = () => {
   const token = useAppSelector(tokenSelector);
   const lang = useAppSelector(langSelector);
   const { data, isError: orderError, isLoading: orderLoading } = useOrders({});
-  const itemsList = useAppSelector(cartSelector);
 
   useEffect(() => {
     i18n.changeLanguage(lang);
